@@ -1,4 +1,4 @@
-# Reconnaissance - TryHackMe
+# Reconnaissance - TryHackMe.
 
 ## Rooms Completed
 
