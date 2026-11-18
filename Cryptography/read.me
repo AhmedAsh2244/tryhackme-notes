@@ -1,0 +1,100 @@
+🔐 TryHackMe - Cryptography for Dummies
+Room: Cryptography for Dummies
+Platform: TryHackMe
+Difficulty: Very Easy / Theory Only
+Category: Cryptography Basics - No Machine Needed
+Cost: Free
+
+TryHackMe
+Difficulty
+Type
+Status
+
+📖 Overview
+Light theory-only room. No VM, no exploitation, no shell.
+
+It explains the 4 basics you will need in every CTF after this:
+
+Symmetric vs Asymmetric
+Hashing
+Encoding vs Encryption
+Base64
+If you understand this room, rooms like Basic Pentesting (SSH key cracking) and GamingServer (SSH key passphrase) will make much more sense.
+
+🧠 Notes - What I Learned
+1. Types of Cryptography
+Symmetric:
+
+Same key to encrypt + decrypt.
+Faster, but less secure if key leaks.
+Example: AES
+Alice <-> Bob use same key.
+
+Asymmetric:
+
+Two keys: Public for encryption, Private for decryption.
+Slower, but more secure.
+Example: RSA
+Alice encrypts with Google's Public Key -> Google decrypts with its Private Key.
+
+Question	Answer
+Which is more secure?	Asymmetric
+Which is faster?	Symmetric
+What does a Bank site use?	Asymmetric
+Encrypt with?	Public Key
+Decrypt with?	Private Key
+Does symmetric use 2 different keys?	Nay
+2. What is a Hash?
+Hash = One-way function. Not reversible.
+Same input = Same output, always.
+Used for: Storing passwords, File integrity.
+Examples:
+
+MD5("hello") = 5d41402abc4b2a76b9719d911017c592
+MD5("hashes are cool") = f762d32e3c160900d94b683e927555b9
+MD5 = Message Digest 5
+Created by: Ronald Rivest
+When you login, site hashes your password and compares it to stored hash. It never stores your real password.
+
+3. Encoding vs Encryption
+Encryption: Needs a key to decrypt. Secure.
+Encoding: NO key needed. Just a way to represent data. NOT encryption.
+
+Base64 Example:
+
+"hi there" -> aGkgdGhlcmU=
+Commands to try:
+
+# Encode
+echo -n "cryptographyisuseful" | base64
+
+# Decode
+echo "dGhlIHNlY3JldCB3b3JkIGlzIDogd2F0ZXJtZWxvbg==" | base64 -d
+# Output: the secret word is : wtar...
+Tip: In CTFs, if you see == at the end, try Base64 first.
+
+🛠️ Tools Used
+Tool	Usage
+echo | base64	Encode / Decode Base64
+echo -n "text" | md5sum	Get MD5 hash
+CyberChef	Quick decode online (for learning)
+# MD5 in terminal
+echo -n "hashes are cool" | md5sum
+
+# Base64 in terminal
+echo -n "cryptographyisuseful" | base64
+echo "dGhlIHNlY3JldCB3b3JkIGlzIDogd2F0ZXJtZWxvbg==" | base64 -d
+✅ Key Takeaways
+Symmetric = Same key, Fast | Asymmetric = Public + Private, Secure
+Hash = One-way, can't decrypt - You can only crack it by guessing (dictionary / brute force) like with john.
+Encoding != Encryption - Base64 is NOT secure, anyone can decode it.
+This is why in Basic Pentesting we used ssh2john + john to crack a hash, not to "decrypt" it.
+🔗 References
+Room: https://tryhackme.com/room/cryptographyfordummies
+Next Rooms: Cryptography Basics, Encryption - Crypto 101
+👨‍💻 Author
+Ahmed Ashraf
+
+TryHackMe Labs & CTF Writeups
+Focus: Penetration Testing / Linux PrivEsc
+Theory-only room - No exploitation. For educational purposes.
